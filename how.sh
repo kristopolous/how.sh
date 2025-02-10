@@ -1,6 +1,5 @@
 shell_hook() {
   local QUESTION="$BUFFER"
-  local UNAME=$(uname -a)
   local SHELL=$(ps -p $$ -o command= | awk '{print $1}')
   local PROMPT="
   You are an experienced Linux engineer with expertise in all Linux 
@@ -18,7 +17,8 @@ shell_hook() {
   If a command is not compatible with the 
   system or shell, provide a suitable alternative.
 
-  The system information is: $UNAME (generated using: uname -a).
+  The system information is: $(uname -a) (generated using: uname -a).
+  The user is $USER. Use sudo when necessary
 
   Create a command to accomplish the following task: $QUESTION
 
